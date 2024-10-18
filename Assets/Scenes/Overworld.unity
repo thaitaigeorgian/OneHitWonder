@@ -4177,7 +4177,7 @@ GameObject:
   - component: {fileID: 1535582900}
   - component: {fileID: 1535582899}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: 'Rat Forest '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
