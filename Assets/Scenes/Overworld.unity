@@ -325,8 +325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jump: 350
-  isJumping: 0
+  jump: 15
+  gravityScale: 3
 --- !u!212 &377197843
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -500,7 +500,7 @@ MonoBehaviour:
   TargetOffset: {x: 0, y: 0, z: 0}
   Damping: {x: 1, y: 1, z: 1}
   Lookahead:
-    Enabled: 0
+    Enabled: 1
     Time: 0
     Smoothing: 0
     IgnoreY: 0

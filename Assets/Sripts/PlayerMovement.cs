@@ -3,29 +3,34 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
-    private float Move;
-
     public float jump;
-
-    public bool isJumping;
-
     private Rigidbody2D rb;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool isJumping;
+    public float gravityScale = 3f; // Add this line
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = gravityScale; // Adjust gravity scale here
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Move = Input.GetAxis("Horizontal");
+        Move();
+        Jump();
+    }
 
-        rb.velocity = new Vector2(speed * Move, rb.velocity.y);
+    private void Move()
+    {
+        float move = Input.GetAxisRaw("Horizontal"); // Using Input.GetAxisRaw for instant response
+        rb.velocity = new Vector2(move * speed, rb.velocity.y);
+    }
 
-        if (Input.GetButtonDown("Jump") && isJumping == false) 
+    private void Jump()
+    {
+        if (Input.GetButtonDown("Jump") && !isJumping)
         {
-            rb.AddForce(new Vector2(rb.velocity.x, jump));
+            rb.velocity = new Vector2(rb.velocity.x, jump); // Using velocity for immediate movement
         }
     }
 
