@@ -6,12 +6,15 @@ public class PlayerMovement : MonoBehaviour
     public float jump;
     private Rigidbody2D rb;
     private bool isJumping;
-    public float gravityScale = 3f; // Add this line
+    public float gravityScale = 3f;
+    private AudioSource audioSource;
+    public AudioClip jumpsound;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = gravityScale; // Adjust gravity scale here
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -31,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, jump); // Using velocity for immediate movement
+            audioSource.PlayOneShot(jumpsound);
         }
     }
 
